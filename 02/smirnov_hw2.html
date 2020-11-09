@@ -13238,7 +13238,56 @@ $$ w_{new}\ =\ w_{old}\ -\ ... $$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$x_i = \left(1,\ x_i^{(1)},\ ...,\ x_i^{(D)}\right)$$$$ L^{(n)}(w) = \frac{1}{n} \sum\limits_{i = 1}^{n}(a(x_i) - y_i)^2 + \frac{1}{C} \sum\limits_{j = 1}^{D}w_j^2 $$$$L_{w_0}^{(n)'} = \frac{2}{n} \sum\limits_{i = 1}^{n}(a(x_i) - y_i)$$$$L_{w_j, j \neq 0}^{(n)'} = \frac{2}{n} \sum\limits_{i = 1}^{n}x_i^{(j)}(a(x_i) - y_i) + \frac{2w_j}{C}$$$$ w_{new} = w_{old} - \lambda\left(\frac{2}{n} \sum\limits_{i = 1}^{n}(a(x_i) - y_i), \frac{2}{n}\sum\limits_{i = 1}^{n}x_i^{(1)}(a(x_i) - y_i) + \frac{2w_1}{C},\ ..., \frac{2}{n}\sum\limits_{i = 1}^{n}x_i^{(D)}(a(x_i) - y_i)  + \frac{2w_D}{C}\right)$$$$ w_{new} = w_{old} - 2\lambda\left(\frac{1}{n} \sum\limits_{i = 1}^{n} (a(x_i) - y_i)(1, x_i^{(1)},\ ..., x_i^{(D)}) +\frac{1}{C}(w_1,\ ..., w_D)\right) $$$$ w_{new} = w_{old} - 2\lambda\left(\frac{1}{n} \sum\limits_{i = 1}^{n} (a(x_i) - y_i)x_i +\frac{1}{C}w_{old}\right) $$<p><strong><em>По формуле градиента видно, что он равен вектору суммы вектора направления наибольшего возрастания исходной функции эмпирического риска и текущего вектора весов с некторым коэфициентом. Т.е. мы пытаемся сделать шаг в таком направлении, чтобы в среднем уменьшить и ошибку алгоритма, и меру вектора весов.</em></strong></p>
+$$x_i = \left(1,\ x_i^{(1)},\ ...,\ x_i^{(D)}\right)$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ L^{(n)}(w) = \frac{1}{n} \sum_{i = 1}^{n}(a(x_i) - y_i)^2 + \frac{1}{C} \sum_{j = 1}^{D}w_j^2 $$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$L_{w_0}^{(n)'} = \frac{2}{n} \sum_{i = 1}^{n}(a(x_i) - y_i)$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$L_{w_j, j \neq 0}^{(n)'} = \frac{2}{n} \sum_{i = 1}^{n}x_i^{(j)}(a(x_i) - y_i) + \frac{2w_j}{C}$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ w_{new} = w_{old} - \lambda\left(\frac{2}{n} \sum_{i = 1}^{n}(a(x_i) - y_i), \frac{2}{n}\sum_{i = 1}^{n}x_i^{(1)}(a(x_i) - y_i) + \frac{2w_1}{C},\ ..., \frac{2}{n}\sum_{i = 1}^{n}x_i^{(D)}(a(x_i) - y_i)  + \frac{2w_D}{C}\right)$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ w_{new} = w_{old} - 2\lambda\left(\frac{1}{n} \sum_{i = 1}^{n} (a(x_i) - y_i)(1, x_i^{(1)},\ ..., x_i^{(D)}) +\frac{1}{C}(w_1,\ ..., w_D)\right) $$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ w_{new} = w_{old} - 2\lambda\left(\frac{1}{n} \sum_{i = 1}^{n} (a(x_i) - y_i)x_i +\frac{1}{C}w_{old}\right) $$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong><em>По формуле градиента видно, что он равен вектору суммы вектора направления наибольшего возрастания исходной функции эмпирического риска и текущего вектора весов с некторым коэфициентом. Т.е. мы пытаемся сделать шаг в таком направлении, чтобы в среднем уменьшить и ошибку алгоритма, и меру вектора весов.</em></strong></p>
 
 </div>
 </div>
@@ -13263,8 +13312,57 @@ $$ w_{new}\ =\ w_{old}\ -\ ... $$</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$x_i = (1,\ x_i^{(1)},\ ...,\ x_i^{(D)})$$$$ L^{(n)}(w) = -\frac{1}{n} \sum\limits_{i = 1}^{n} \left[y_i\log{a_i} + (1 - y_i)\log(1 - a_i)\right] + \frac{1}{C}\sum\limits_{j = 1}^{D}w_j^2 $$$$ a(x_i) = \frac{1}{1 + e^{-\langle x_i, w \rangle}};\ 1 - a_i = \frac{e^{-\langle x_i, w \rangle}}{1 - e^{-\langle x_i, w \rangle}};\ a(x_i)'_{w_j} = \frac{x_i^{(j)} e^{-\langle x_i, w \rangle}}{\left(1 + e^{-\langle x_i, w \rangle}\right)^2}$$$$ L_{w_0}^{(n)'} = \frac{1}{n}\sum\limits_{i = 1}^{n} \left[ \frac{-y_i e^{^{-\langle x_i, w \rangle}}}{1 + e^{-\langle x_i, w \rangle}} + \frac{1 - y_i}{1 + e^{-\langle x_i, w \rangle}} \right] = \frac{1}{n} \sum\limits_{i = 1}^{n} \left[ -y_i(1 - a(x_i) + (1 - y_i)a(x_i) \right] = \frac{1}{n} \sum\limits_{i = 1}^{n} (a(x_i) - y_i) $$$$ L_{w_j, j \neq 0}^{(n)'} = \frac{1}{n}\sum\limits_{i = 1}^{n} \left[ \frac{-y_i x_i^{(j)} e^{^{-\langle x_i, w \rangle}}}{1 + e^{-\langle x_i, w \rangle}} + \frac{(1 - y_i) x_i^{(j)}}{1 + e^{-\langle x_i, w \rangle}} \right] + \frac{w_j}{C}= \frac{1}{n} \sum\limits_{i = 1}^{n} x_i^{(j)} \left[ -y_i(1 - a(x_i) + (1 - y_i)a(x_i) \right] + \frac{2w_j}{C} = \\
-= \frac{1}{n} \sum\limits_{i = 1}^{n} x_i^{(j)}(a(x_i) - y_i) + \frac{2w_j}{C}$$$$ w_{new} = w_{old} - \lambda\left(\frac{1}{n} \sum\limits_{i = 1}^{n}(a(x_i) - y_i), \frac{1}{n}\sum\limits_{i = 1}^{n}x_i^{(1)}(a(x_i) - y_i) + \frac{2w_1}{C},\ ..., \frac{1}{n}\sum\limits_{i = 1}^{n}x_i^{(D)}(a(x_i) - y_i)  + \frac{2w_D}{C}\right)$$$$ w_{new} = w_{old} - \lambda\left(\frac{1}{n} \sum\limits_{i = 1}^{n} (a(x_i) - y_i)x_i +\frac{2}{C}w_{old}\right) $$<p><strong><em>Видно, что формула градиентного спуска для логистической регрессии с точностью до коэфицентов совпадает с формулой для линейной регресии. Соответственно, как и в линейной регрессии, мы пытаемся сделать шаг в таком направлении, чтобы в среднем и приблизить истинные вероятности принадлежности объекта к классу "1", и уменьшить меру вектора весов.</em></strong></p>
+$$x_i = (1,\ x_i^{(1)},\ ...,\ x_i^{(D)})$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ L^{(n)}(w) = -\frac{1}{n} \sum_{i = 1}^{n} \left[y_i\log{a_i} + (1 - y_i)\log(1 - a_i)\right] + \frac{1}{C}\sum_{j = 1}^{D}w_j^2 $$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ a(x_i) = \frac{1}{1 + e^{-\langle x_i, w \rangle}};\ 1 - a_i = \frac{e^{-\langle x_i, w \rangle}}{1 - e^{-\langle x_i, w \rangle}};\ a(x_i)'_{w_j} = \frac{x_i^{(j)} e^{-\langle x_i, w \rangle}}{\left(1 + e^{-\langle x_i, w \rangle}\right)^2}$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ L_{w_0}^{(n)'} = \frac{1}{n}\sum_{i = 1}^{n} \left[ \frac{-y_i e^{^{-\langle x_i, w \rangle}}}{1 + e^{-\langle x_i, w \rangle}} + \frac{1 - y_i}{1 + e^{-\langle x_i, w \rangle}} \right] = \frac{1}{n} \sum_{i = 1}^{n} \left[ -y_i(1 - a(x_i) + (1 - y_i)a(x_i) \right] = \frac{1}{n} \sum_{i = 1}^{n} (a(x_i) - y_i) $$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ L_{w_j, j \neq 0}^{(n)'} = \frac{1}{n}\sum_{i = 1}^{n} \left[ \frac{-y_i x_i^{(j)} e^{^{-\langle x_i, w \rangle}}}{1 + e^{-\langle x_i, w \rangle}} + \frac{(1 - y_i) x_i^{(j)}}{1 + e^{-\langle x_i, w \rangle}} \right] + \frac{w_j}{C}= \frac{1}{n} \sum_{i = 1}^{n} x_i^{(j)} \left[ -y_i(1 - a(x_i) + (1 - y_i)a(x_i) \right] + \frac{2w_j}{C} = \\
+= \frac{1}{n} \sum_{i = 1}^{n} x_i^{(j)}(a(x_i) - y_i) + \frac{2w_j}{C}$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ w_{new} = w_{old} - \lambda\left(\frac{1}{n} \sum_{i = 1}^{n}(a(x_i) - y_i), \frac{1}{n}\sum_{i = 1}^{n}x_i^{(1)}(a(x_i) - y_i) + \frac{2w_1}{C},\ ..., \frac{1}{n}\sum_{i = 1}^{n}x_i^{(D)}(a(x_i) - y_i)  + \frac{2w_D}{C}\right)$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ w_{new} = w_{old} - \lambda\left(\frac{1}{n} \sum_{i = 1}^{n} (a(x_i) - y_i)x_i +\frac{2}{C}w_{old}\right) $$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong><em>Видно, что формула градиентного спуска для логистической регрессии с точностью до коэфицентов совпадает с формулой для линейной регресии. Соответственно, как и в линейной регрессии, мы пытаемся сделать шаг в таком направлении, чтобы в среднем и приблизить истинные вероятности принадлежности объекта к классу "1", и уменьшить меру вектора весов.</em></strong></p>
 
 </div>
 </div>
@@ -13333,9 +13431,9 @@ $$E(L | x_i) = -p(y_i = 1 |x_i ) \log a(x_i)  - p(y_i = 0 | x_i) \log( 1 - a(x_i
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Воспользуемся необходимым условием максимум функции:</strong>
-$$ \frac{d(E(L | x_i))}{da} = -p(y_i = 1 | x_i)\frac{1}{a(x_i)} + p(y_i = 0 | x_i)\frac{1}{1- a(x_i)} = 0 $$.
+$$ \frac{d(E(L | x_i))}{da} = -p(y_i = 1 | x_i)\frac{1}{a(x_i)} + p(y_i = 0 | x_i)\frac{1}{1- a(x_i)} = 0. $$
 <strong>Воспользуемся тем, что $p(y_i = 1 | x_i) + p(y_i = 0 | x_i) = 1$:</strong>
-$$ \frac{d(E(L | x_i))}{da} = p(y_i = 1 | x_i)(a(x_i) - 1) + p(y_i = 0 | x_i) * a(x_i) =  p(y_i = 1 | x_i)(a(x_i) - 1) + (1 - p(y_i = 1 | x_i)) * a(x_i) = \\= a(x_i) - p(y_i = 1 | x_i) = 0 \Leftrightarrow a(x_i) = p(y_i = 1 | x_i)$$.</p>
+$$ \frac{d(E(L | x_i))}{da} = p(y_i = 1 | x_i)(a(x_i) - 1) + p(y_i = 0 | x_i)a(x_i) =  p(y_i = 1 | x_i)(a(x_i) - 1) + (1 - p(y_i = 1 | x_i))a(x_i) = \\= a(x_i) - p(y_i = 1 | x_i) = 0 \Leftrightarrow a(x_i) = p(y_i = 1 | x_i). $$</p>
 
 </div>
 </div>
